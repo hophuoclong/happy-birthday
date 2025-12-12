@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Tặng em ❤️</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/spinload.css">
+  <link rel="stylesheet" type="text/css" href=" https://fonts.googleapis.com/css?family=Pacifico" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  
+  <style>
+    .music-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999999;
+    }
+    
+    .contenttt {
+      text-align: center;
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .contenttt h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    
+    .contenttt p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+    
+    .btnn {
+      padding: 15px 40px;
+      font-size: 1.2em;
+      background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .btnn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+    }
+    
+    .icon {
+      font-size: 1.2em;
+    }
+    
+    /* Animation cho nút */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    .btnn{
+      animation: pulse 2s infinite;
+    }
+    </style>
+<div id="music-banner" class="music-banner loop">
+      <div class="contenttt">
+        <h2>Anh chào bé!</h2>
+      <p>Đến thế giới anh dành cho bé 🥰</p>
+        <button class="btnn" onclick="playMusic()" id="playButton">
+          <!-- <span class="icon"></span> -->
+          <span class="text">Bé nhấn vào đây❤</span>
+        </button>
+      </div>
+    </div>
+    <audio id="myAudio" src="./sound/gshdshd.mp3"></audio>
+    <script>
+      function playMusic() {
+        const audio = document.getElementById('myAudio');
+        const banner = document.getElementById('music-banner');
+        
+        audio.play();
+        // Thêm hiệu ứng fade out khi ẩn banner
+        banner.style.opacity = '0';
+        banner.style.transition = 'opacity 0.5s ease-out';
+        
+        setTimeout(() => {
+          banner.style.display = 'none';
+        }, 500);
+      }
+      </script>
+  <div class="wrapper">
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+    </div>
+    <div id="bg" style="background-image: url(imgthu/n1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;"></div>
+    <div class="content">
+      <header>
+        <h2 id="title"></h2>
+        <h4 id="desc"></h4>
+      </header>
+      <button id="yes" type="button" class="btn btn-danger btn-lg"> </button>
+      <button id="no" type="button" class="btn btn-info btn-lg"></button>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="./config.js"></script>
+  <script src="./js/main.js"></script>
+
+</body>
+
+</html>

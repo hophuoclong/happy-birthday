@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tặng em ❤️</title>
+</head>
+<body>
+
+<style>
+body {
+    font-size: 16px;
+    font-family: "Helvetica", "Arial", sans-serif;
+    text-align: center;
+    background-color: #fce4ec;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.love-button {
+    position: relative;
+    padding: 18px 36px;
+    font-size: 1.3em;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(
+        45deg,
+        #ff4081 0%,
+        #ff80ab 50%,
+        #ff4081 100%
+    );
+    color: white;
+    box-shadow: 0 5px 20px rgba(255, 64, 129, 0.4);
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    display: inline-block;
+    animation: pulse 2s infinite;
+    background-size: 200% auto;
+}
+
+/* Hiệu ứng shine */
+.love-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 2s infinite;
+    pointer-events: none;
+}
+
+/* Hiệu ứng glow */
+.love-button::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff4081, #ff80ab);
+    border-radius: 25px;
+    z-index: -1;
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.love-button span {
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+/* Animations */
+@keyframes shine {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.5;
+    }
+    20% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0.5;
+    }
+    40% {
+        opacity: 0;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 5px 20px rgba(255, 64, 129, 0.4);
+    }
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 5px 30px rgba(255, 64, 129, 0.6);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 5px 20px rgba(255, 64, 129, 0.4);
+    }
+}
+
+/* Hover effects */
+.love-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 64, 129, 0.6);
+    background-position: right center;
+}
+
+.love-button:hover::after {
+    opacity: 1;
+}
+
+/* Active state */
+.love-button:active {
+    transform: scale(0.95) translateY(2px);
+    box-shadow: 0 2px 10px rgba(255, 64, 129, 0.3);
+}
+
+/* Hearts Animation */
+@keyframes floatingHearts {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    color: #ff4081;
+    pointer-events: none;
+    animation: floatingHearts 2s ease-in-out infinite;
+    z-index: 0;
+}
+
+/* Ripple Effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Hiệu ứng sparkle */
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: white;
+    pointer-events: none;
+    animation: sparkle 0.8s linear forwards;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(20);
+        opacity: 0;
+    }
+}
+
+/* Media Queries cho mobile */
+@media (max-width: 768px) {
+    .love-button {
+        padding: 20px 40px;
+        font-size: 1.4em;
+        margin: 20px;
+    }
+
+    .love-button::after {
+        filter: blur(20px);
+        opacity: 0.8;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.02);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+}
+</style>
+
+<a id="loveButton" class="love-button">
+  <span>Bé nhấn vào đi :3</span>
+</a>
+
+<script>
+// Xử lý click/touch để chuyển trang
+const button = document.getElementById('loveButton');
+
+// Xử lý cho PC
+button.addEventListener('click', handleClick);
+
+// Xử lý cho mobile
+button.addEventListener('touchend', handleClick);
+
+function handleClick(e) {
+  e.preventDefault(); // Ngăn chặn hành vi mặc định
+  
+  // Thêm hiệu ứng active
+  button.classList.add('active');
+  
+  // Delay chuyển trang để hiệu ứng chạy
+  setTimeout(() => {
+      window.location.href = './index1.html';
+  }, 300);
+}
+
+// Ngăn chặn các hành vi mặc định không mong muốn trên mobile
+button.addEventListener('touchstart', function(e) {
+  e.preventDefault();
+  createHeart(e.touches[0].clientX, e.touches[0].clientY);
+  createRipple(e);
+});
+
+// Các script hiệu ứng khác giữ nguyên
+
+// Tắt hành vi scroll mặc định khi touch
+document.addEventListener('touchmove', function(e) {
+  if(e.target.closest('.love-button')) {
+      e.preventDefault();
+  }
+}, { passive: false });
+</script>
+
+<script>
+// Touch events
+document.querySelector('.love-button').addEventListener('touchstart', function(e) {
+    createHeart(e.touches[0].clientX, e.touches[0].clientY);
+    createRipple(e);
+    e.preventDefault();
+});
+
+// Mouse events
+document.querySelector('.love-button').addEventListener('mousemove', createSparkle);
+document.querySelector('.love-button').addEventListener('click', createRipple);
+
+// Create heart function
+function createHeart(x, y) {
+    const heart = document.createElement('div');
+    heart.innerHTML = '❤️';
+    heart.className = 'heart';
+    heart.style.left = (x - 10) + 'px';
+    heart.style.top = (y - 10) + 'px';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 2000);
+}
+
+// Create sparkle function
+function createSparkle(e) {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    
+    const rect = this.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    sparkle.style.left = x + 'px';
+    sparkle.style.top = y + 'px';
+    
+    this.appendChild(sparkle);
+    
+    setTimeout(() => {
+        sparkle.remove();
+    }, 800);
+}
+
+// Create ripple function
+function createRipple(e) {
+    const button = e.currentTarget;
+    const ripple = document.createElement('div');
+    ripple.className = 'ripple';
+    
+    const rect = button.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    
+    ripple.style.width = ripple.style.height = size + 'px';
+    
+    const x = (e.clientX || e.touches[0].clientX) - rect.left - size/2;
+    const y = (e.clientY || e.touches[0].clientY) - rect.top - size/2;
+    
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    
+    button.appendChild(ripple);
+    
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
+}
+
+// Auto create hearts
+setInterval(() => {
+    const button = document.querySelector('.love-button');
+    const rect = button.getBoundingClientRect();
+    const x = rect.left + Math.random() * rect.width;
+    const y = rect.top + Math.random() * rect.height;
+    createHeart(x, y);
+}, 2000);
+
+// Prevent default touch behaviors
+document.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+}, { passive: false });
+</script>
+
+</body>
+</html>
